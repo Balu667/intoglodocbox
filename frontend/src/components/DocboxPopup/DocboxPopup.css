@@ -1,0 +1,19 @@
+.expenseinput{
+	max-width: 270px;
+}
+.popup{
+	padding: 20px;
+}
+
+.flex-container{
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.c-flex{
+	display: flex;
+	flex-direction: column;
+}
+
+
