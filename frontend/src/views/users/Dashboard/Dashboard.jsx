@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 import "./Dashboard.css";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { DataGrid } from "@mui/x-data-grid";
 import { useNavigate } from "react-router";
 import UploadFilePopup from "../../../components/UploadFilePopup";
 import { useGetUserDocboxs } from "../../../hooks";
 import { useSelector } from "react-redux";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import moment from 'moment'
 
-
-const uploadFileValidation = yup.object({
-    // fileName: yup.string().required("fileName is required"),
-});
 
 const UserDashboard = () => {
     const { profileData } = useSelector(state => state.profile)
@@ -28,11 +23,11 @@ const UserDashboard = () => {
         formState: { errors: uploadFileErrors },
         control: uploadFileControl,
         reset: uploadFileReset,
+        watch
     } = useForm({
-        resolver: yupResolver(uploadFileValidation),
         mode: "onTouched",
         defaultValues: {
-            startDate: null,
+            startDate: moment(),
             endDate: null
         },
     });
@@ -141,6 +136,7 @@ const UserDashboard = () => {
                 errors={uploadFileErrors}
                 control={uploadFileControl}
                 id={boxId}
+                watch={watch}
             />
         </section>
     );
