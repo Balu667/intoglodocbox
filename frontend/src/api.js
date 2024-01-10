@@ -245,7 +245,6 @@ export const insertFilesByDocboxId = async (data) => {
             method: "POST",
             body: data,
             headers: {
-                "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
         });
